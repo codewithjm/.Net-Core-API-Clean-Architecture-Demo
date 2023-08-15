@@ -9,6 +9,7 @@ using System.Text;
 using WebAPI.Middlewares;
 using Microsoft.AspNetCore.Http.Json;
 using Serilog;
+using Business;
 
 namespace WebAPI.Extensions;
 
@@ -113,7 +114,7 @@ public static class ProgramExtension
                 .AllowAnyMethod().AllowAnyHeader());
         });
         //builder.Services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0).AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
-        //builder.Services.AddBusiness();
+        builder.Services.AddBusiness();
         //builder.Services.AddPersistence(builder.Configuration);
         //builder.Services.AddShared(builder.Configuration);
 

@@ -7,9 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Contexts\" />
       <Folder Include="Migrations\" />
-      <Folder Include="Repositories\" />
+      <Folder Include="Repositories\Dapper\" />
+      <Folder Include="Repositories\EF\" />
     </ItemGroup>
 
     <ItemGroup>

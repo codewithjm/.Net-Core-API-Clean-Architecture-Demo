@@ -20,7 +20,7 @@ public class PerformanceLoggingBehavior<TRequest, TResponse> : IPipelineBehavior
         _stopwatch = new();
         _logger = logger;
     }
-    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
     {
         var name = typeof(TRequest).Name;
         _logger.Information($"Handling {name}.");
@@ -36,4 +36,5 @@ public class PerformanceLoggingBehavior<TRequest, TResponse> : IPipelineBehavior
 
         return response;
     }
+
 }

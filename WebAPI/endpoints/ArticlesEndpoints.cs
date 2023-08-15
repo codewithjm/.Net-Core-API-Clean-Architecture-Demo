@@ -1,4 +1,5 @@
 ﻿
+using Business.Features.Articles.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Shared.Commons.Consts;
@@ -15,9 +16,10 @@ public static class ArticlesEndpoints
     {
         const string route = ApiRouteConst.ApiPath;
 
-        _ = app.MapGet(route + "test/article",[AllowAnonymous] async () =>
+        _ = app.MapGet(route + "test/article",[AllowAnonymous] async (IMediator mediator) =>
         {
-            return Results.Ok(true);
+
+            return Results.Ok(await mediator.Send(new ArticlesQuery()));
         }).AddSummary<int>(SwaggerTagsConst.ARTICLE_TAG, "Article List", "\n GET /test articles");
 
         return app;
