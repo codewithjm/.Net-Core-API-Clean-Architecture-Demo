@@ -56,15 +56,15 @@ public static class ProgramExtension
         };
         var securityContactInfo = new OpenApiContact()
         {
-            Name = "Teleperformance USA",
-            Email = "www.wfmesp.teleperformanceusa.com",
+            Name = "Clean Architecture Demo",
+            Email = "www.testcleanarche.com",
             Url = new Uri("https://wfmesp.teleperformanceusa.com/")
         };
         var securityInfo = new OpenApiInfo()
         {
             Version = "v1",
-            Title = "Employee Scheduling Portal APIs",
-            Description = "One stop shop of all the apis of ESP API.",
+            Title = "Demo Clean Architecture",
+            Description = "One stop shop of all the apis of Web API.",
             Contact = securityContactInfo
         };
         _ = builder.Services.AddSwaggerGen(options => {
@@ -83,7 +83,7 @@ public static class ProgramExtension
         {
             o.AddPolicy("Access:ADMIN", p => p.
             RequireAuthenticatedUser().
-            RequireClaim("AccessLevel", "ADMIN"));
+            RequireClaim("Role", "ADMIN"));
         });
 
         _ = builder.Services.AddAuthentication(options =>
@@ -116,6 +116,8 @@ public static class ProgramExtension
         //builder.Services.AddBusiness();
         //builder.Services.AddPersistence(builder.Configuration);
         //builder.Services.AddShared(builder.Configuration);
+
+
         return builder;
     }
 
@@ -128,7 +130,7 @@ public static class ProgramExtension
     public static WebApplication ConfigureApplication(this WebApplication app)
     {
         var ti = CultureInfo.CurrentCulture.TextInfo;
-        if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Local")
+        if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
         {
             _ = app.UseSwagger();
             _ = app.UseSwaggerUI(c =>

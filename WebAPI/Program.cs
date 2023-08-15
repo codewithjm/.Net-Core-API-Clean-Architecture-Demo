@@ -1,4 +1,5 @@
 using Serilog;
+using WebAPI.Endpoints;
 using WebAPI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args)
@@ -20,6 +21,8 @@ builder.Configuration
 var app = builder
     .Build()
     .ConfigureApplication();
+
+app.MapArticleEndpoints();
 
 try
 {
