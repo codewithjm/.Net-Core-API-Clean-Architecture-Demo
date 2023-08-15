@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http.Json;
 using Serilog;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Net.Mime;
+using Shared.Commons.Exceptions;
 
 namespace WebAPI.Extensions;
 

@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿using Serilog;
+using Shared.Commons.Exceptions;
+using System.Net;
 using System.Text.Json;
 
 namespace WebAPI.Middlewares;
